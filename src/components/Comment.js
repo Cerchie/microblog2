@@ -19,11 +19,12 @@ function Comment({deleteComment, text, id}) {
         {deleteComment && (
           <i
             className="fa fa-times text-danger mr-2"
-            onClick={handleDelete}
+            onClick={handleDelete} //logal AND makes sure this part of component renders only if deleteComment exists and the item is rendered
           />
         )}
-
-        {text}
+        
+        {text} 
+        {/* text of comment generated here */}
       </p>
     </div>
   );

@@ -7,13 +7,13 @@ import React, { useState } from 'react';
  *
  */
 
-function PostForm({post, save, cancel}) {
+function PostForm({post, save, cancel}) { //grabbing thunks from parent POstDisplay
 
   const [postData, setPostData] = useState({
     title: post.title,
     description: post.description,
     body: post.body,
-  });
+  }); //putting post data in state
 
   function handleChange(evt) {
     const {name, value} = evt.target;
@@ -21,7 +21,7 @@ function PostForm({post, save, cancel}) {
       ...data,
       [name]: value
     }));
-  }
+  } //classic handle Change/Submits
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -60,7 +60,8 @@ function PostForm({post, save, cancel}) {
       </div>
 
       <button className="btn btn-primary mr-2">Save</button>
-      <button onClick={cancel} className="btn btn-secondary">Cancel</button>
+      <button onClick={cancel} className="btn btn-secondary">Cancel</button> 
+      {/* this cancel functionality comes again, from thunk */}
     </form>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./Post.css";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
-// here we import the actions we will need
+// here we import the actions we will need-- THUNK THUNK THUNK! 
 import {
   getPostFromAPI,
   updatePostInAPI,
@@ -25,7 +25,9 @@ import CommentForm from "../components/CommentForm";
  * - handles add-comment form submission
  * - handles comment-deletion
  * - handles post-deletion
- * basically, this component relies on the actions re comments and posts to create functionality on the frontend
+ * basically, this component relies on the actions re comments and posts to 
+ * create functionality on the frontend.
+ * W
  */
 
 function Post(props) {
@@ -36,7 +38,9 @@ function Post(props) {
   const post = useSelector(st => st.posts[postId]); //using our Redux seleve to get the post with the id
   const dispatch = useDispatch(); //grabbing dispatch
 
-  /** If we don't have the post, request it from API. */
+  /** If we don't have the post, request it from API. What follows is a list of 
+   * thunks that execute CRUD for the posts
+  */
 
   useEffect(function loadPostWhenPostOrIdChanges() {
     async function getPost() {
@@ -99,7 +103,7 @@ function Post(props) {
    */
 
   if (!post) return <p>Loading</p>;
-
+//component render uses thunks here
   return (
     <div className="Post">
 

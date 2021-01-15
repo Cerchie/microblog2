@@ -1,5 +1,5 @@
 import React from 'react';
-import "./PostDisplay.css";
+
 
 /** Display a post:
  *
@@ -7,7 +7,7 @@ import "./PostDisplay.css";
  * - show vote count and +/- buttons (& call parent on action)
  *
  */
-
+//this postDisplay grabs thunks like doVote and deletePost from parent PostDisplay
 function PostDisplay({doVote, toggleEdit, deletePost, post}) {
   const { title, description, body, votes } = post;
 

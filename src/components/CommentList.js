@@ -7,14 +7,14 @@ import Comment from "./Comment"
  *
  */
 
-function CommentList({comments = [], deleteComment}) {
+function CommentList({comments = [], deleteComment}) { //pulls comments and func from parent
   return (
-    comments.map(c => (
+    comments.map(c => ( //renders each comment
       <Comment
         key={c.id}
         id={c.id}
         text={c.text}
-        deleteComment={deleteComment}
+        deleteComment={deleteComment} 
       />
     )));
 }

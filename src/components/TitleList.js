@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import "./TitleList.css";
+
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTitlesFromAPI } from '../actions/titles';
+import { fetchTitlesFromAPI } from '../actions/titles'; //THUNK!
 import { Link } from 'react-router-dom';
-import { sendVoteToAPI } from "../actions/posts";
+import { sendVoteToAPI } from "../actions/posts"; //THUNK!
 
 /** Show list of blog titles, ordered by popularity. */
 
 function TitleList() {
-  const titles = useSelector(st => st.titles);
-  const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
+  const titles = useSelector(st => st.titles); //useSelector grabs the curr titles
+  const dispatch = useDispatch(); //we'll need dispatch
+  const [isLoading, setIsLoading] = useState(true); //loading state
 
   useEffect(function() {
     async function fetchTitle() {
-      await dispatch(fetchTitlesFromAPI());
+      await dispatch(fetchTitlesFromAPI()); //executing thunk in UseEffect
       setIsLoading(false);
     }
 
@@ -26,15 +26,15 @@ function TitleList() {
 
 
   function vote(direction, id) {
-    dispatch(sendVoteToAPI(id, direction));
+    dispatch(sendVoteToAPI(id, direction)); //executing thunk here
   }
 
-  if (isLoading) return <b>Loading</b>;
+  if (isLoading) return <b>Loading</b>; //loading screen
 
-  if (!isLoading && titles.length === 0) {
-    return <b>Please add a post!</b>;
+  if (!isLoading && titles.length === 0) { //if empty...
+    return <b>Please add a post!</b>; 
   }
-
+///else... return the post titles! 
   return (
     <div className="row">
       {titles.map(title => (

@@ -8,11 +8,6 @@ import Home from "./Home";
 
 import './App.css';
 
-
-
-import './App.css'
-
-
 // this renders the links , paths, and BrowserRouter (which is wrapped around the app in index.js)
 function App() {
 
